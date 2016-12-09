@@ -23,6 +23,6 @@ To install, run
 
 ## Other
 
-I am not aware off all the mnemonic standards used in the crypto world.
+I am not aware of all the mnemonic standards used in the crypto world.
 If know one you want to see implemented, just sumbit a post request !
 
