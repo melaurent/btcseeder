@@ -10,9 +10,10 @@ module.exports = function(grunt) {
                destPrefix: 'public/script/lib'
             },
             files: {
-               'jquery.js': 'jquery/dist/jquery.min.js',
-               'vue.js': 'vue/dist/vue.min.js',
-               'bootstrap.js': 'bootstrap/dist/js/bootstrap.min.js'
+                'jquery.js': 'jquery/dist/jquery.min.js',
+                'vue.js': 'vue/dist/vue.min.js',
+                'bootstrap.js': 'bootstrap/dist/js/bootstrap.min.js',
+                'mnemonic.js': 'mnemonic.js/mnemonic.js'
             },
          },
          style: {
