@@ -9,6 +9,9 @@ Different wallets have their own implementation of the BIP39 standard.
 This tool can be used to convert your seed, so you can use it within
 your prefered wallet !
 
+It can also be used to convert your seed into my own implementation,
+which is, in my opinion, easier to remember.
+
 ## Supported standards:
 * [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
 * [Mnemonic.js](https://github.com/ggozad/mnemonic.js)
