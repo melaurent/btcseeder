@@ -6,8 +6,8 @@ different standards.
 ## Why ?
 
 Different wallets have their own implementation of the BIP39 standard.
-This tool can be used to convert your seed, so it can be used within
-your preffered wallet !.
+This tool can be used to convert your seed, so you can use it within
+your prefered wallet !
 
 ## Supported standards:
 * [BIP39](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki)
