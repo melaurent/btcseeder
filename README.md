@@ -1,15 +1,15 @@
-### What is this ?
+## What is this ?
 
 Btc seeder is a simple web app to help you convert a mnemonic passphrase to
-different standard.
+different standards.
 
-# Supported standards:
+## Supported standards:
 * BIP39
 
+## Installation
 
-### Installation
+To install, run
 
-To install, run 
 `npm install`
 `grunt bowercopy`
 
