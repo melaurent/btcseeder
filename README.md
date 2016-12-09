@@ -27,5 +27,5 @@ To install, run
 ## Other
 
 I am not aware of all the mnemonic standards used in the crypto world.
-If know one you want to see implemented, just sumbit a post request !
+If know one you want to see implemented, just submit a post request !
 
