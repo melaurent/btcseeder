@@ -17,10 +17,9 @@ module.exports = function(grunt) {
          },
          style: {
             options: {
-               destPrefix: 'public/css'
+               destPrefix: 'public/css/lib'
             },
             files: {
-               'slotmachine.css': 'jQuery-SlotMachine/dist/jquery.slotmachine.min.css',
                 'bootstrap.css': 'bootstrap/dist/css/bootstrap.min.css'
             },
          },
