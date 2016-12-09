@@ -1,0 +1,132 @@
+<script src="script/lib/jquery.js"></script>
+<script src="script/lib/tether.js"></script>
+<script src="script/lib/bootstrap.js"></script>
+<script src="script/passphrase.js"></script>
+<script src="script/lib/vue.js"></script>
+<script src="script/lib/slotmachine.js"></script>
+<script src="script/lib/socket.io.js"></script>
+<script src="script/lib/mnemonic.js"></script>
+<script src="script/lib/bitcore.js"></script>
+<link rel="stylesheet" type="text/css" href="css/slotmachine.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/tether.css">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/glyphicons.css">
+
+<!DOCTYPE html>
+<html>
+   <head>
+   </head>
+
+   <body>
+      <div id="app">
+      <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+         <a class="navbar-brand" href="#">Pepe Roulette</a>
+         <div class="nav navbar-nav float-lg-right">
+            <li class="nav-item">
+               <span class="navbar-text">Credit: {{ credit }}</span>
+            </li>
+            <li v-if="logged" class="nav-item dropdown">
+               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                  <span class="caret"></span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" href="#">Show my passphrase</a>
+                  <a v-on:click="logout" class="dropdown-item" href="#">Log Out</a>
+               </div>
+            </li>
+            <li v-if="!logged" class="nav-item dropdown">
+               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Login<span class="caret"></span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right">
+                  <div class="container-fluid">
+                     <form class="login-form">
+                        <div class="form-group" v-bind:class="{'has-danger': isPassPhraseError}">
+                           <label class="form-control-label" for="inputSecret">Passphrase</label>
+                           <input v-model="passPhrase" id="inputAddress" class="form-control form-control-danger" placeholder = "Passphrase" :has-danger="isPassPhraseError">
+                           <div class="form-control-feedback" v-show="isPassPhraseError" for="inputAddress">{{ passPhraseError }}</label>
+                        </div>
+                        <div class="form-group"></div>
+                        <div class="alert alert-warning" role="alert">
+                           Attention ! peperoulette is not responsible for the misuse of your passphrase.
+                           Never enter your passphrase in websites you don't trust ! Your passphrase is never sent to our back end.
+                        </div>
+                        <div class="form-button">
+                           <button v-on:click="login" class="btn btn-success" type="button" :disabled="!passPhraseEntered">Login</button>
+                           <button v-on:click="register" class="btn btn-primary" type="button">Register</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </li>
+         </div>
+      </nav>
+      <div class="main">
+         <div class="container">
+         <div class="slot">
+            <div id="slot-machine">
+               <div v-for="token in tokens" class="token-card">
+                  <img v-bind:src="token.image">
+               </div>
+            </div>
+            <img id="machine-overlay" src="img/card.png">
+         </div>
+         <form class="roll-form">
+            <div class="form-group" v-bind:class="{'has-danger': isAddressError}">
+               <label class="form-control-label" for="inputAddress">Address</label>
+               <input id="inputAddress" v-model="address" class="form-control form-control-danger" placeholder="Address" :disabled="logged">
+               <div class="form-control-feedback" v-show="isAddressError" for="inputAddress">{{ addressError }}</label>
+            </div>
+            <div class="form-group"></div>
+            <div class="form-button">
+               <button v-on:click="roll" id="butt" class="btn btn-default" :disabled="credit==0" type="button">Roll !</button>
+            </div>
+         </form>
+         </div>
+      </div>
+      <div class="info">
+         <div class="container">
+            <h1>What can I win ?</h1>
+            The following list is a list of rarepepe you can win with the peperoulette faucet.
+            <table class="table table-striped">
+               <thead>
+               <tr>
+                  <th>Name</th>
+                  <th>Amount Left</th>
+                  <th>Chance</th>
+               </tr>
+               </thead>
+               <tbody>
+                  <tr v-for="token in tokens">
+                     <td> <span class="token-name" v-bind:data-image="token.image"> {{ token.token }}</span></td>
+                     <td>{{ token.amount }}</td>
+                     <td>{{ token.proba }}%</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </body>
+</html>
+<div id="registerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Welcome !</h4>
+         </div>
+         <div class="modal-body">
+            This is your passphrase:
+            <div class="alert alert-success">
+               {{ passPhrase }}
+            </div>
+            Be sure to write it somewhere, it will be used to log in on the site.
+         </div>
+      </div>
+   </div>
+</div>
+<script src="script/app.js"></script>
