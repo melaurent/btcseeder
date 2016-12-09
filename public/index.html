@@ -3,29 +3,57 @@
 <script src="script/lib/bootstrap.js"></script>
 <script src="script/lib/vue.js"></script>
 <script src="script/lib/mnemonic.js"></script>
+<script src="script/bip39.js"></script>
+<script src="script/sentastic.js"></script>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <link rel="stylesheet" type="text/css" href="css/lib/tether.css">
 <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/lib/bootstrap-theme.css">
 
 <!DOCTYPE html>
 <html>
-   <head>
-   </head>
+    <head>
+    </head>
 
-   <body>
-      <div id="app">
-      <nav class="navbar navbar-fixed-top navbar-grey bg-faded">
-         <a class="navbar-brand" href="#">BTC Seeder</a>
-         <div class="nav navbar-nav float-lg-right">
-         </div>
-      </nav>
-      <div class="main">
-         <div class="container">
-             <div class="input-group">
-                <span class="input-group-addon" id="basic-addon1">BIP39</span>
-                <input
-             </div>
-         </div>
+    <body>
+    <div id="app">
+        <nav class="navbar navbar-fixed-top navbar-grey bg-faded">
+            <a class="navbar-brand" href="#">BTC Seeder</a>
+            <div class="nav navbar-nav float-lg-right">
+            </div>
+        </nav>
+    <div class="main">
+        <div class="container">
+        <div class="content">
+            <div v-bind:class="{ 'has-danger': hasError }" class="form-group">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ selected }}
+                        <span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" v-on:click="onBip39">BIP39</li>
+                        <a class="dropdown-item" v-on:click="onMnemonic">Mnemonic</a>
+                        <a class="dropdown-item" v-on:click="onSentastic">Sentastic</a>
+                        <a class="dropdown-item" v-on:click="onHex">Hex</a>
+                    </div>
+                </div>
+                <span v-if="hexSelected" class="input-group-addon">0x</span>
+                <input v-model:input="input" type="text" class="form-control">
+                <div class="input-group-btn">
+                    <button v-on:click="onGo" class="btn btn-success" type="button">Go !</button>
+                </div>
+            </div>
+            <div class="form-control-feedback">{{ error }}</div>
+            </div>
+            <br>
+            <seed v-model="bip39" seed-type="BIP39" message="This seed is used in "></seed>
+            <seed v-model="mnemonic" seed-type="Mnemonic" message="This seed is used in the Electrum Wallet"></seed>
+            <seed v-model="sentastic" seed-type="Sentastic" message="This my own mnemonic implementation"></seed>
+            <seed v-model="hexStr" seed-type="Hex" message="This is the hexa decimal value of your private key"></seed>
+        </div>
+        </div>
       </div>
    </body>
 </html>

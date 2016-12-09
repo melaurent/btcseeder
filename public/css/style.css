@@ -11,4 +11,12 @@
     background-color: #eee;
 }
 
+.content {
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
 

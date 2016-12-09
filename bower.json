@@ -16,7 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7",
     "vue": "^2.1.4",
     "mnemonic.js": "^1.1.1",
     "tether": "^1.4.0"
