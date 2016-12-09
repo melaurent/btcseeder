@@ -5,7 +5,8 @@
   "main": "",
   "dependencies": {
     "grunt": "^1.0.1",
-    "grunt-bowercopy": "^1.2.4"
+    "grunt-bowercopy": "^1.2.4",
+    "bip39": "^2.2.0"
   },
   "devDependencies": {},
   "scripts": {
