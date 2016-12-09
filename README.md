@@ -11,5 +11,6 @@ different standards.
 To install, run
 
 `npm install`
+
 `grunt bowercopy`
 
